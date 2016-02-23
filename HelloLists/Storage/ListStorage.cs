@@ -13,56 +13,31 @@ namespace HelloLists.Service
 {
     class ListStorage : IListStorage
     {
-        //[Dependency]
+        [Dependency]
         public IDataAdapter<ListItem> dataAdapter { get; set; }
 
-        public IEnumerable<ListItem> GetAllLists(string sortField)
+        public IEnumerable<ListItem> GetAllLists()
         {
-            this.dataAdapter = DependencyFactory.Resolve<IDataAdapter<ListItem>>();
-            return new ObservableCollection<ListItem>(this.dataAdapter.Read());
-            
-            //return new ObservableCollection<ListItem>
-            //{
-            //    new ListItem
-            //    {
-            //        Title = "b prima lista",
-            //        CreatedOn = DateTime.Now,
-            //    },
-            //    new ListItem
-            //    {
-            //        Title = "asta e a doua",
-            //        CreatedOn = DateTime.Now,
-            //    },
-            //    new ListItem
-            //    {
-            //        Title = "ultima",
-            //        CreatedOn = DateTime.Now,
-            //    }
-            //};
+            return this.dataAdapter.Fetch();
+        }
+        public IEnumerable<ListItem> GetAvailableLists()
+        {
+            return this.dataAdapter.Fetch( /*li => !((ListItem)li).IsDeleted*/);
         }
 
         public void ListAdd(ListItem newList)
         {
-            //throw new NotImplementedException();
+            this.dataAdapter.Insert(newList);
         }
 
         public void ListUpdate(ListItem existingList)
         {
-            throw new NotImplementedException();
+            this.dataAdapter.Update(existingList);
         }
         public void ListRemove(ListItem existingList)
         {
-            throw new NotImplementedException();
-        }
-
-        public void MarkAsDeleted(ListItem existingList)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateField(ListItem existingList, string v1, string v2)
-        {
-            throw new NotImplementedException();
-        }
+            existingList.IsDeleted = true;
+            this.dataAdapter.Update(existingList);
+        }        
     }
 }

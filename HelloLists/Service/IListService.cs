@@ -9,7 +9,7 @@ namespace HelloLists.Service
 {
     interface IListService
     {
-        IEnumerable<ListItem> GetAllLists(string sortField);
+        IEnumerable<ListItem> GetExistingLists();
 
         void ListAdd(ListItem newList);
 

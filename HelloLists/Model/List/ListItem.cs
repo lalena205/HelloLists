@@ -33,5 +33,10 @@ namespace HelloLists.Model
             get;
             set;
         }
+        public bool IsDeleted
+        {
+            get;
+            set;
+        }
     }
 }

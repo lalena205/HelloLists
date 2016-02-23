@@ -26,15 +26,16 @@ namespace HelloLists
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private ListModel ListModel { get; set; }
+        internal MainPageData PageData { get; set; }
+
+        public ListItem SelectItem { get; set; }
 
         private ListItem currentList;
         public MainPage()
         {
             this.InitializeComponent();
 
-            this.ListModel = new ListModel();
-            ListModel.InitializeLists();
+            PageData = new MainPageData();
 
             this.InitializeControls();
         }
@@ -61,13 +62,15 @@ namespace HelloLists
         {
             //currentList = sender.ListId;
 
-            this.ListModel.Remove(currentList);
+            this.PageData.RemoveList(currentList);
         }
 
         private void txtAddNew_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
+                e.Handled = true;
+
                 AddListToCollection();
             }
         }
@@ -88,7 +91,8 @@ namespace HelloLists
                 LastModified = DateTime.Now,
                 LastUpdated = DateTime.MinValue
             };
-            ListModel.Add(currentList);
+
+            PageData.AddList(currentList);
 
             txtAddNew.Text = string.Empty;
             ListView.SelectedItem = currentList;
@@ -109,5 +113,14 @@ namespace HelloLists
             //}
         }
 
+        private void btnAddList_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

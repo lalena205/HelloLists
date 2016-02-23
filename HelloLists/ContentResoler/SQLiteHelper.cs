@@ -10,26 +10,27 @@ namespace HelloLists.ContentResoler
 {
     class SQLiteHelper
     {
-        private string DBPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "hellolists.s3db");
+        public static string DBPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "hellolists.s3db");
 
         public void Init()
         {            
             // Initialize the database if necessary
             using (var db = new SQLite.SQLiteConnection(DBPath))
             {
-                // Create the tables if they don't exist
-                db.CreateTable<ListItem>();
+                //db.DeleteAll<ListItem>();                
+                if ( db.CreateTable<ListItem>() > 0)
+                {
+                    LoadInitialData();
+                }
+
                 db.CreateTable<TaskItem>();
             }
         }
 
-        private void LoadData()
+        private void LoadInitialData()
         {
             using (var db = new SQLite.SQLiteConnection(DBPath))
             {
-                // Empty the Customer table
-                //db.DeleteAll<ListItem>();
-
                 ListItem li = new ListItem
                 {
                     Title = "Books",
@@ -49,8 +50,7 @@ namespace HelloLists.ContentResoler
                     Title = "Songs",
                     CreatedOn = DateTime.Now,
                 };
-                db.Insert(li);
-                
+                db.Insert(li);                
             }
         }
     }

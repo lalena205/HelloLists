@@ -1,8 +1,10 @@
 ﻿using HelloLists.Base;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,83 +13,61 @@ using Windows.Storage;
 namespace HelloLists.ContentResoler
 {
     class DataAdapter<T> : IDataAdapter<T>
-    {
-        private string filePath;
-        public string FilePath
+        where T : new()
+    {        
+        public void Delete(T entry)
         {
-            get
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
-                if (string.IsNullOrEmpty(filePath)){
-                    this.filePath = string.Format("C:/Data/{0}.json", typeof(T).Name);
-                }
-
-                return this.filePath;
+                db.Delete<T>(entry);
             }
-
-            set
-            {
-                this.filePath = value;
-            }
-        }
-        
-        public void Delete(T newEntry)
-        {
-            throw new NotImplementedException();
         }
 
         public void Insert(T newEntry)
         {
-            List<T> list = Read();
-            list.Add(newEntry);
-
-            // Clear file content
-            File.WriteAllText(FilePath, string.Empty);
-
-            using (FileStream fs = new FileStream(FilePath, FileMode.Open))
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
-                using (StreamWriter sr = new StreamWriter(fs))
-                {
-                    sr.WriteAsync(JsonConvert.SerializeObject(list, Formatting.Indented));
-                }
-            }            
+                db.Insert(newEntry);
+            }
         }
 
-        public List<T> Read()
+        public List<T> Fetch()
         {
-            string json = LoadData();
+            //return Fetch(_ => true);
+            var entities = new List<T>();
 
-            try {
-                return JsonConvert.DeserializeObject<List<T>>(json);
-            }
-            catch (Exception ex)
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
-                // Log exception
-                return null;
+                var query = db.Table<T>();
+                foreach (T entity in query)
+                {
+                    entities.Add(entity);
+                }
             }
+            return entities;
+        }
+
+        public List<T> Fetch(Func<T, bool> whereCondition)
+        {
+            var entities = new List<T>();
+
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
+            {
+                var query = db.Table<T>().Where(t => whereCondition(t));
+                foreach (T entity in query)
+                {
+                    entities.Add(entity);
+                }
+            }
+            return entities;
         }
 
         public void Update(T newEntry)
         {
-            throw new NotImplementedException();
-        }
-
-        public string LoadData()
-        {
-            string json = string.Empty;
-
-            var t = Task.Run(() =>
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
-                using (FileStream fs = new FileStream(FilePath, FileMode.Open))
-                {
-                    using (StreamReader sr = new StreamReader(fs))
-                    {
-                        json = sr.ReadToEnd();
-                    }
-                }
-            });
-            t.Wait();
-            
-            return json;        
+                db.InsertOrReplace(newEntry);
+            }
         }
     }
 }

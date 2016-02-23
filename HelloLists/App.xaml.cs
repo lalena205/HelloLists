@@ -52,8 +52,7 @@ namespace HelloLists
 #endif
 
             /*
-             *   Register dependencies
-             */
+             *   Register dependencies             */
             DependencyFactory = new DependencyFactory();
 
             LoadData();
