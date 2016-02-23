@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Practices.Unity;
-using HelloLists.Content;
+using HelloLists.Service;
+using HelloLists.ContentResoler;
 
 namespace HelloLists.Base
 {
@@ -38,7 +39,17 @@ namespace HelloLists.Base
             //{
             //    section.Configure(container);
             //}
-            container.RegisterType<IDataService, DataService>();
+
+            // Register repositories
+            container.RegisterType<IListStorage, ListStorage>();
+            container.RegisterType<ITaskStorage, TaskStorage>();
+
+            // Register services
+            container.RegisterType<IListService, ListService>();
+            container.RegisterType<ITaskService, TaskService>();
+
+            //Register adapters
+            container.RegisterType(typeof(IDataAdapter<>), typeof(DataAdapter<>));
 
             _container = container;
         }
@@ -49,14 +60,26 @@ namespace HelloLists.Base
         /// <typeparam name="T">Type of object to return</typeparam>
         public static T Resolve<T>()
         {
-            T ret = default(T);
+            //T ret = default(T);
 
-            if (Container.IsRegistered(typeof(T)))
+            //if (Container.IsRegistered(typeof(T)))
+            //{
+            //    ret = Container.Resolve<T>();
+            //}
+
+            //return ret;
+            T resolved;
+
+            //if (Container.IsRegistered<T>()) 
+            try
             {
-                ret = Container.Resolve<T>();
+                resolved = Container.Resolve<T>();
             }
-
-            return ret;
+            catch (Exception)
+            {
+                resolved = default(T);
+            }
+            return resolved;
         }
     }
 }

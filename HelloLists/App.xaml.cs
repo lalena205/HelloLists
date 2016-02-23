@@ -16,14 +16,16 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using HelloLists.ContentResoler;
 
-namespace App2
+namespace HelloLists
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     sealed partial class App : Application
     {
+        private static DependencyFactory DependencyFactory;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -52,7 +54,9 @@ namespace App2
             /*
              *   Register dependencies
              */
-            DependencyFactory df = new DependencyFactory();
+            DependencyFactory = new DependencyFactory();
+
+            LoadData();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -83,6 +87,13 @@ namespace App2
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        private void LoadData()
+        {
+            SQLiteHelper dbHelper = new SQLiteHelper();
+
+            dbHelper.Init();
         }
 
         /// <summary>

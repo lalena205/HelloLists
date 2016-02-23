@@ -1,15 +1,17 @@
 ﻿using HelloLists.Base;
-using HelloLists.Content;
+using HelloLists.Service;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace HelloLists.Model
 {
     class ListModel
     {
-        private IDataService _dataService;
+        [Dependency]
+        public IListService ListService { get; set; }
+       
         private string _sortField;
 
         private ObservableCollection<ListItem> lists;
@@ -20,29 +22,28 @@ namespace HelloLists.Model
         {
             get { return this.lists; }
         }
+        
         public ListModel()
         {
-            this._dataService = DependencyFactory.Resolve<IDataService>();
-            this._sortField = "Title";
-
-            InitializeLists();            
+            this.ListService = DependencyFactory.Resolve<IListService>();
+            this._sortField = "Title";          
         }  
 
         public void Add(ListItem item)
         {
             this.lists.Add(item);
-            this._dataService.ListAdd(item);
+            this.ListService.ListAdd(item);
         }
 
         public void Remove(ListItem item)
         {
             this.lists.Remove(item);            
-            this._dataService.ListRemove(item);
+            this.ListService.ListRemove(item);
         }
         
-        private void InitializeLists()
+        public void InitializeLists()
         {
-            this.lists = new ObservableCollection<ListItem>(this._dataService.GetAllLists(_sortField));
+            this.lists = new ObservableCollection<ListItem>(this.ListService.GetAllLists(_sortField));
         }   
     }
 }

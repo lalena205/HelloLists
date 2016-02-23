@@ -4,6 +4,9 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Newtonsoft.Json": "8.0.2",
+    "sqlite-net": "1.0.8",
+    "System.Data.SQLite": "1.0.99",
     "Unity": "4.0.1"
   },
   "frameworks": {

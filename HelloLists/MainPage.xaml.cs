@@ -34,6 +34,7 @@ namespace HelloLists
             this.InitializeComponent();
 
             this.ListModel = new ListModel();
+            ListModel.InitializeLists();
 
             this.InitializeControls();
         }

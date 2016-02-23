@@ -240,6 +240,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -404,6 +413,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -1870,6 +1880,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -2034,6 +2053,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -3533,6 +3553,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -3697,6 +3726,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -5201,6 +5231,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -5365,6 +5404,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -6864,6 +6904,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -7028,6 +7077,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -8532,6 +8582,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -8696,6 +8755,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -10195,6 +10255,15 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/8.0.2": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "sqlite-net/1.0.8": {},
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -10359,6 +10428,7 @@
           "lib/dotnet/System.Data.Common.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.99": {},
       "System.Diagnostics.Contracts/4.0.0": {
         "compile": {
           "ref/netcore50/System.Diagnostics.Contracts.dll": {}
@@ -12297,6 +12367,41 @@
         "ref/xamarinmac20/_._"
       ]
     },
+    "Newtonsoft.Json/8.0.2": {
+      "sha512": "e5yWmEfu68rmtG431zl9N/7PlNKQDIuiDW5MHlEFAZcecakcxrIGnKqrPAtWNILzK2oNanRB5cD150MYhECK3g==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml",
+        "Newtonsoft.Json.nuspec",
+        "package/services/metadata/core-properties/cc8c591d554640789c6a6ef6456f7772.psmdcp",
+        "tools/install.ps1"
+      ]
+    },
+    "sqlite-net/1.0.8": {
+      "sha512": "gJXHCj1gSTPTYzL9oJevih+JwF9EUnt/EO2ccnTLDBtYeVDCIRXPdTSBokSWL7mjNIDnOcpB1zAuC9Qg9YAgAg==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "content/SQLite.cs",
+        "content/SQLiteAsync.cs",
+        "package/services/metadata/core-properties/261ed628192946e8a72777c551360e85.psmdcp",
+        "sqlite-net.nuspec"
+      ]
+    },
     "System.AppContext/4.0.0": {
       "sha512": "gUoYgAWDC3+xhKeU5KSLbYDhTdBYk9GssrMSCcWUADzOglW+s0AmwVhOUGt2tL5xUl7ZXoYTPdA88zCgKrlG0A==",
       "type": "Package",
@@ -12601,6 +12706,16 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "System.Data.Common.nuspec"
+      ]
+    },
+    "System.Data.SQLite/1.0.99": {
+      "sha512": "3vLyQfl0QOFZwUh5/ubQU1xMi2+6sFITylqdZ6pOIrG3Q661IaA9VxbM7NIDZG5orr7F8RDgu+1Mo7dA0lCQog==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "package/services/metadata/core-properties/037118ac10834cdbb035a9a95690eb0c.psmdcp",
+        "System.Data.SQLite.nuspec"
       ]
     },
     "System.Diagnostics.Contracts/4.0.0": {
@@ -15027,6 +15142,9 @@
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "Newtonsoft.Json >= 8.0.2",
+      "sqlite-net >= 1.0.8",
+      "System.Data.SQLite >= 1.0.99",
       "Unity >= 4.0.1"
     ],
     "UAP,Version=v10.0": []
