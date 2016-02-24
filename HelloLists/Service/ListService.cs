@@ -8,7 +8,7 @@ using HelloLists.Model;
 
 namespace HelloLists.Service
 {
-    class ListService : IListService
+    public class ListService : IListService
     {
         [Dependency]
         public IListStorage listStorage { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
-    interface IListStorage
+    public interface IListStorage
     {
         //use datalistitem and in serices make transition from datalistitem to listitem
         IEnumerable<ListItem> GetAllLists();

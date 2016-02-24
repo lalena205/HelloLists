@@ -25,7 +25,7 @@
                     <TextBlock Text="Starred" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <ListView x:Name="TodoListsView" ItemsSource="{x:Bind PageData.ListModel.Lists}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="149">
+                    <ListView x:Name="TodoListsView" ItemsSource="{x:Bind ListView.Lists}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="149">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:ListItem">
                                 <StackPanel Orientation="Horizontal" Margin="6">

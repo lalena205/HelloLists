@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace HelloLists.Model
 {
-    class ListModel
+    public class ListModel
     {
         public string SortField { get; set; }
 

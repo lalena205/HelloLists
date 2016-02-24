@@ -47,9 +47,12 @@ namespace HelloLists.Base
             // Register services
             container.RegisterType<IListService, ListService>();
             container.RegisterType<ITaskService, TaskService>();
+            container.RegisterType<ISyncService, SyncService>();
 
             //Register adapters
             container.RegisterType(typeof(IDataAdapter<>), typeof(DataAdapter<>));
+            container.RegisterType(typeof (ISyncDataProviderService), typeof (SyncDataProviderService));
+
 
             _container = container;
         }
@@ -60,22 +63,13 @@ namespace HelloLists.Base
         /// <typeparam name="T">Type of object to return</typeparam>
         public static T Resolve<T>()
         {
-            //T ret = default(T);
-
-            //if (Container.IsRegistered(typeof(T)))
-            //{
-            //    ret = Container.Resolve<T>();
-            //}
-
-            //return ret;
             T resolved;
-
-            //if (Container.IsRegistered<T>()) 
+            
             try
             {
                 resolved = Container.Resolve<T>();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 resolved = default(T);
             }

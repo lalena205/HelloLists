@@ -17,7 +17,7 @@ namespace HelloLists.ContentResoler
             // Initialize the database if necessary
             using (var db = new SQLite.SQLiteConnection(DBPath))
             {
-                //db.DeleteAll<ListItem>();                
+                db.DeleteAll<ListItem>();                
                 if ( db.CreateTable<ListItem>() > 0)
                 {
                     LoadInitialData();

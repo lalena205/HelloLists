@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using HelloLists.ContentResoler;
+using HelloLists.Service;
 
 namespace HelloLists
 {
@@ -25,7 +26,9 @@ namespace HelloLists
     /// </summary>
     sealed partial class App : Application
     {
-        private static DependencyFactory DependencyFactory;
+        public static ListViewModel AppListsModel { get; set; }
+        //public task view model
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -53,9 +56,18 @@ namespace HelloLists
 
             /*
              *   Register dependencies             */
-            DependencyFactory = new DependencyFactory();
+            var dependencyFactory = new DependencyFactory();
 
+            // INITIALIZE DATABASE
             LoadData();
+
+            ISyncService syncService = DependencyFactory.Resolve<ISyncService>();
+            IListService listService = DependencyFactory.Resolve<IListService>();
+
+            // load  model for main view
+            AppListsModel = new ListViewModel(syncService, listService);
+            
+            syncService.Start();
 
             Frame rootFrame = Window.Current.Content as Frame;
 

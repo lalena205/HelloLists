@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
-    interface IListService
+    public interface IListService
     {
         IEnumerable<ListItem> GetExistingLists();
 

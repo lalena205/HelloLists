@@ -105,11 +105,22 @@
     <Compile Include="Base\Settings.cs" />
     <Compile Include="Base\SettingsLocal.cs" />
     <Compile Include="Base\DependencyFactory.cs" />
-    <Compile Include="ContentResoler\DataAdapter.cs" />
-    <Compile Include="ContentResoler\IDataAdapter.cs" />
-    <Compile Include="ContentResoler\SQLite.cs" />
-    <Compile Include="ContentResoler\SQLiteAsync.cs" />
-    <Compile Include="ContentResoler\SQLiteHelper.cs" />
+    <Compile Include="ListViewModel.cs" />
+    <Compile Include="Model\Sync\ListItemUpdate.cs" />
+    <Compile Include="SenderType.cs" />
+    <Compile Include="Service\SyncDataProviderService.cs" />
+    <Compile Include="Service\ISyncDataProviderService.cs" />
+    <Compile Include="Service\SyncService.cs" />
+    <Compile Include="ContentResolver\DataAdapter.cs" />
+    <Compile Include="ContentResolver\IDataAdapter.cs" />
+    <Compile Include="ContentResolver\SQLite.cs" />
+    <Compile Include="ContentResolver\SQLiteAsync.cs" />
+    <Compile Include="ContentResolver\SQLiteHelper.cs" />
+    <Compile Include="Model\Sync\AbstractUpdate.cs" />
+    <Compile Include="Model\Sync\TaskItemUpdate.cs" />
+    <Compile Include="Model\Sync\UpdateType.cs" />
+    <Compile Include="Service\ISyncService.cs" />
+    <Compile Include="Model\Sync\SyncMessage.cs" />
     <Compile Include="TaskPage.xaml.cs">
       <DependentUpon>TaskPage.xaml</DependentUpon>
     </Compile>

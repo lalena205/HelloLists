@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using HelloLists.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,16 +27,16 @@ namespace HelloLists
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        internal MainPageData PageData { get; set; }
-
         public ListItem SelectItem { get; set; }
+
+        private ListViewModel ListView { get; set; } 
 
         private ListItem currentList;
         public MainPage()
         {
             this.InitializeComponent();
-
-            PageData = new MainPageData();
+            
+            ListView = App.AppListsModel; 
 
             this.InitializeControls();
         }
@@ -67,7 +68,8 @@ namespace HelloLists
         {
             //currentList = sender.ListId;
 
-            this.PageData.RemoveList(currentList);
+            this.ListView.RemoveList(currentList);
+            //here i can access 
         }
 
         private void txtAddNew_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -97,26 +99,11 @@ namespace HelloLists
                 LastUpdated = DateTime.MinValue
             };
 
-            PageData.AddList(currentList);
+            ListView.AddList(currentList, SenderType.User);
 
             txtAddNew.Text = string.Empty;
         }
-
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            //this.ListModel.CollectionChanged(e);
-            //switch(sender)
-            //{
-            //    case AddListButton: {
-            //        this.dataHelper.ListAdd(currentList);
-            //        break;                    
-            //    }
-            //    case RemoveListButton: {
-            //        this.dataHelper.RemoveList(currentList);
-            //    }
-            //}
-        }
-
+        
         private void btnAddList_Click_1(object sender, RoutedEventArgs e)
         {
 
