@@ -126,5 +126,13 @@ namespace HelloLists
         {
 
         }
+
+        private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var MyFrame = this.Frame;
+            Frame.Navigate(typeof(TaskPage), "HELLO From Navigation");
+            //else if (PesquisarPalavraChave.IsSelected) { Frame.Navigate(typeof(View.SearchWordPage)); }
+            //else if (PesquisarAssunto.IsSelected) { Frame.Navigate(typeof(View.SearchMatterPage)); }
+        }
     }
 }
