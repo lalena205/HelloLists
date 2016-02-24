@@ -45,7 +45,12 @@ namespace HelloLists
             txtAddNew.GotFocus += txtAddNew_GotFocus;
             txtAddNew.KeyDown += txtAddNew_KeyDown;
 
-            btnAddList.Click += btnAddList_Click;
+            btnAddList.Click += btnAddList_Click;            
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //PageData.SelectedList = ListView.SelectedValue;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -95,7 +100,6 @@ namespace HelloLists
             PageData.AddList(currentList);
 
             txtAddNew.Text = string.Empty;
-            ListView.SelectedItem = currentList;
         }
 
         private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

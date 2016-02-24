@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using System;
 
 namespace HelloLists.Model
 {
     public class ListItem
     {
+        [PrimaryKey]
         public Guid Id
         {
             get;
@@ -33,6 +35,7 @@ namespace HelloLists.Model
             get;
             set;
         }
+
         public bool IsDeleted
         {
             get;

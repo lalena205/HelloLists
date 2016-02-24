@@ -13,7 +13,7 @@ namespace HelloLists
         private ObservableCollection<ListItem> lists;
 
         [Dependency]
-        public IListService ListService { get; set; }
+        private IListService ListService { get; set; }
 
         public ListModel ListModel
         {
@@ -26,7 +26,13 @@ namespace HelloLists
                 return new ListModel { Lists = lists };
             }
         }
-        
+        public string  SelectedList{
+            get
+            {
+                return "test";
+            }
+        }  
+              
         public ObservableCollection<ListItem> Lists
         {
             get { return this.lists; }

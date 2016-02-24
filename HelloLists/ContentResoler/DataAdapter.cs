@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -32,8 +33,7 @@ namespace HelloLists.ContentResoler
         }
 
         public List<T> Fetch()
-        {
-            //return Fetch(_ => true);
+        {            
             var entities = new List<T>();
 
             using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
@@ -47,13 +47,13 @@ namespace HelloLists.ContentResoler
             return entities;
         }
 
-        public List<T> Fetch(Func<T, bool> whereCondition)
+        public List<T> Fetch(Expression<Func<T, bool>> whereCondition)
         {
             var entities = new List<T>();
 
             using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
-                var query = db.Table<T>().Where(t => whereCondition(t));
+                var query = db.Table<T>().Where(whereCondition);
                 foreach (T entity in query)
                 {
                     entities.Add(entity);

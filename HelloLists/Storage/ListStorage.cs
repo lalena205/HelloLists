@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,9 @@ namespace HelloLists.Service
         }
         public IEnumerable<ListItem> GetAvailableLists()
         {
-            return this.dataAdapter.Fetch( /*li => !((ListItem)li).IsDeleted*/);
+            Expression<Func<ListItem, bool>> ex = li => li.IsDeleted == false;
+
+            return this.dataAdapter.Fetch(ex);
         }
 
         public void ListAdd(ListItem newList)

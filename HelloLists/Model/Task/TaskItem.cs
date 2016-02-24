@@ -1,8 +1,10 @@
 ﻿namespace HelloLists.Model
 {
+    using SQLite;
     using System;
-	public class TaskItem
+    public class TaskItem
 	{
+        [PrimaryKey]
 		public Guid Id 
 		{
 			get;
