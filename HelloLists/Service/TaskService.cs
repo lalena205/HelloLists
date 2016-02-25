@@ -23,9 +23,12 @@ namespace HelloLists.Service
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TaskItem> GetTasksForList(Guid ListId, string _sortField)
+        public IEnumerable<TaskItem> GetTasksForListByTitle(Guid ListId)
         {
-            return this.taskStorage.GetTasksForList(ListId);
+            var tasks = taskStorage.GetTasksForList(ListId).ToArray();
+            Array.Sort(tasks, TaskItem.SortAscendingByTitle());
+
+            return tasks;
         }
 
         public void TaskAdd(TaskItem newTask)

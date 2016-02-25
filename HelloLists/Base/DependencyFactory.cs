@@ -54,7 +54,7 @@ namespace HelloLists.Base
             //Register adapters
             container.RegisterType(typeof(IDataAdapter<>), typeof(DataAdapter<>));
             container.RegisterType(typeof (ISyncDataProviderService), typeof (SyncDataProviderService));
-            container.RegisterType(typeof(ISettings), typeof(Settings));
+            container.RegisterType(typeof(ISettingsService), typeof(Settings));
 
             _container = container;
         }

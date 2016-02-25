@@ -23,7 +23,7 @@ namespace HelloLists.Service
         public ISyncDataProviderService SyncDataProviderService { get; set; }
 
         [Dependency]
-        public ISettings Settings { get; set; }
+        public ISettingsService Settings { get; set; }
 
         private Task syncThread;
         private List<Action<SyncMessage>> handlers;

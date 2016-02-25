@@ -1,11 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
 using Windows.Storage;
+using HelloLists.Base;
 
-namespace HelloLists.Base
+namespace HelloLists.Service
 {
-    public class Settings : ObservableObject, ISettings
+    public class Settings : ObservableObject, ISettingsService
     {
         private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
         private readonly StorageFolder _localFolder = ApplicationData.Current.LocalFolder;

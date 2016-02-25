@@ -1,9 +1,20 @@
-﻿namespace HelloLists.Model
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace HelloLists.Model
 {
     using SQLite;
     using System;
-    public class TaskItem
-	{
+    public class TaskItem : IComparable<TaskItem>
+    {
+        private class sortAscendingByTitle : IComparer
+        {
+            int IComparer.Compare(object a, object b)
+            {
+                return string.Compare(((TaskItem)a).Title, ((TaskItem)b).Title, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
         [PrimaryKey]
 		public Guid Id 
 		{
@@ -66,5 +77,17 @@
         }
 
         public bool IsDeleted { get; set; }
-	}
+
+        // Implement IComparable CompareTo to provide default sort order.
+        public int CompareTo(TaskItem otherTask)
+        {
+            return DateTime.Compare(this.CreatedOn, otherTask.CreatedOn);
+        }
+
+        // Method to return IComparer object for sort helper.
+        public static IComparer SortAscendingByTitle()
+        {
+            return (IComparer)new sortAscendingByTitle();
+        }
+    }
 }

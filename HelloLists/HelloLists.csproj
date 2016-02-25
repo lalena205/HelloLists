@@ -102,14 +102,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\ObservableObject.cs" />
-    <Compile Include="Base\ISettings.cs" />
-    <Compile Include="Base\Settings.cs" />
     <Compile Include="Base\DependencyFactory.cs" />
     <Compile Include="BlankPage.xaml.cs">
       <DependentUpon>BlankPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Sync\ListItemUpdate.cs" />
     <Compile Include="Base\SenderType.cs" />
+    <Compile Include="Service\ISettingsService.cs" />
+    <Compile Include="Service\Settings.cs" />
     <Compile Include="Service\SyncDataProviderService.cs" />
     <Compile Include="Service\ISyncDataProviderService.cs" />
     <Compile Include="Service\SyncService.cs" />
