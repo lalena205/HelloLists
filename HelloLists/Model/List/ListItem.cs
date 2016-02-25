@@ -3,6 +3,9 @@ using System;
 
 namespace HelloLists.Model
 {
+    /// <summary>
+    /// Model class used to store List item in database
+    /// </summary>
     public class ListItem
     {
         [PrimaryKey]

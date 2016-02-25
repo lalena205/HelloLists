@@ -8,6 +8,9 @@ using HelloLists.Model.Sync;
 
 namespace HelloLists.Service
 {
+    /// <summary>
+    /// Network layer that will provide synchronizations between local and cloud storage 
+    /// </summary>
     public interface ISyncDataProviderService
     {
         IEnumerable<SyncMessage> FetchUpdates(DateTime lastSucccesfulSync);

@@ -2,6 +2,8 @@
 using Microsoft.Practices.Unity;
 using HelloLists.Service;
 using HelloLists.ContentResoler;
+using HelloLists.ContentResolver;
+using HelloTasks.Service;
 
 namespace HelloLists.Base
 {

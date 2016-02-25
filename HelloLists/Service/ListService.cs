@@ -13,9 +13,6 @@ namespace HelloLists.Service
         [Dependency]
         public IListStorage listStorage { get; set; }
         
-        public ListService()
-        {
-        }
         public IEnumerable<ListItem> GetExistingLists()
         {
             return this.listStorage.GetAvailableLists();

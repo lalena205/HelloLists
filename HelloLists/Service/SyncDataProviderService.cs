@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HelloLists.Model;
 using HelloLists.Model.Sync;
 
 namespace HelloLists.Service
 {
-    class SyncDataProviderService: ISyncDataProviderService
+    /// <summary>
+    ///  Dummy implementation for testing pursope
+    /// It works !
+    /// </summary>
+    class SyncDataProviderService : ISyncDataProviderService
     {
         public IEnumerable<SyncMessage> FetchUpdates(DateTime lastSucccesfulSync)
         {
-            if (DateTime.Now.Second%5 == 0)
+            if (DateTime.Now.Second%30 == 0)
             {
                 return new List<SyncMessage>
                 {
@@ -22,7 +23,7 @@ namespace HelloLists.Service
                         Type = UpdateType.Add,
                         Data = new TaskItemUpdate
                         {
-                            TaskUpdate = new TaskItem()
+                            Item = new TaskItem()
                             {
                                 Title = "Blana"
                             }

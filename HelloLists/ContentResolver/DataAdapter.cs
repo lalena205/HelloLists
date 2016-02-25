@@ -1,19 +1,17 @@
-﻿using HelloLists.Base;
-using Microsoft.Practices.Unity;
-using Newtonsoft.Json;
-using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
+using HelloLists.ContentResoler;
+using SQLite;
 
-namespace HelloLists.ContentResoler
+namespace HelloLists.ContentResolver
 {
-    class DataAdapter<T> : IDataAdapter<T>
+    /// <summary>
+    /// Generic SQLite adapter
+    /// Performs basic operations on SQLite database
+    /// </summary>
+    /// <typeparam name="T">Generic type T indicating table to read form</typeparam>
+    public class DataAdapter<T> : IDataAdapter<T>
         where T : new()
     {        
         public void Delete(T entry)
@@ -32,6 +30,11 @@ namespace HelloLists.ContentResoler
             }
         }
 
+        public List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<IComparable>> orderByExpression)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<T> Fetch()
         {            
             var entities = new List<T>();
@@ -39,10 +42,7 @@ namespace HelloLists.ContentResoler
             using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
                 var query = db.Table<T>();
-                foreach (T entity in query)
-                {
-                    entities.Add(entity);
-                }
+                entities.AddRange(query);
             }
             return entities;
         }
@@ -54,12 +54,14 @@ namespace HelloLists.ContentResoler
             using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
                 var query = db.Table<T>().Where(whereCondition);
-                foreach (T entity in query)
-                {
-                    entities.Add(entity);
-                }
+                entities.AddRange(query);
             }
             return entities;
+        }
+
+        public List<T> Fetch(Expression<Func<IComparable>> orderByExpression)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(T newEntry)

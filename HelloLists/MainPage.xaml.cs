@@ -48,12 +48,7 @@ namespace HelloLists
 
             btnAddList.Click += btnAddList_Click;            
         }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //PageData.SelectedList = ListView.SelectedValue;
-        }
-
+        
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
@@ -63,15 +58,7 @@ namespace HelloLists
         {
             AddListToCollection();
         }
-
-        private void RemoveListButton_Click(object sender, RoutedEventArgs e)
-        {
-            //currentList = sender.ListId;
-
-            this.ListView.RemoveList(currentList);
-            //here i can access 
-        }
-
+        
         private void txtAddNew_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)

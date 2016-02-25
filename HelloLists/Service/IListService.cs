@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
+    /// <summary>
+    /// Interface describing Lists operations
+    /// </summary>
     public interface IListService
     {
         IEnumerable<ListItem> GetExistingLists();
@@ -14,6 +17,7 @@ namespace HelloLists.Service
         void ListAdd(ListItem newList);
 
         void ListUpdate(ListItem existingList);
+
         void ListRemove(ListItem existingList);
     }
 }

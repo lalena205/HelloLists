@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
-    interface ITaskStorage
+    /// <summary>
+    /// /// Interface describing basic db operations for Tasks
+    /// </summary>
+    public interface ITaskStorage
     {
         IEnumerable<TaskItem> GetTasksForList(Guid ListId);
         void TaskAdd(TaskItem newTask);

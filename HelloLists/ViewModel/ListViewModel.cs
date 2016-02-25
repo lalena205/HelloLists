@@ -6,6 +6,9 @@ using HelloLists.Service;
 
 namespace HelloLists.ViewModel
 {
+    /// <summary>
+    /// Central model to handle lists. Comunicates with UI, Sync Service and database
+    /// </summary>
     public class ListViewModel
     {
         private readonly ISyncService _syncService;
@@ -23,9 +26,15 @@ namespace HelloLists.ViewModel
             dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
 
             this.listService = listService;
+
+            // Initialize observable list collection; 
             this.Lists = new ObservableCollection<ListItem>(this.listService.GetExistingLists());
         }
 
+        /// <summary>
+        /// Parses messages received from the SyncService, unwrapps then and performs necessary operation
+        /// </summary>
+        /// <param name="message">Synchronization message</param>
         private void SyncUpdateHandler(SyncMessage message)
         {
             var update = message.Data as ListItemUpdate;
@@ -70,7 +79,5 @@ namespace HelloLists.ViewModel
             this.Lists.Remove(item);
             // TODO
         }
-
-
     }
 }

@@ -7,6 +7,11 @@ using HelloLists.Model.Sync;
 
 namespace HelloLists.Service
 {
+    /// <summary>
+    /// Synchronization service
+    /// Gets updates fron SyncDataProvider, parses data and updates Local Models
+    /// Invoked by Local Models when models are changed to send updates on cloud
+    /// </summary>
     public interface ISyncService : IDisposable
     {
         void Start();

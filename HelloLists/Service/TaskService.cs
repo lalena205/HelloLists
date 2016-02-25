@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
-    class TaskService : ITaskService
+    public class TaskService : ITaskService
     {
-        private ITaskStorage taskStorage;
+        [Dependency]
+        public ITaskStorage taskStorage { get; set; }
 
         [InjectionConstructor]
         public TaskService(ITaskStorage taskStorage)
@@ -22,7 +23,7 @@ namespace HelloLists.Service
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TaskItem> GetTasksForList(Guid ListId)
+        public IEnumerable<TaskItem> GetTasksForList(Guid ListId, string _sortField)
         {
             return this.taskStorage.GetTasksForList(ListId);
         }
@@ -40,6 +41,11 @@ namespace HelloLists.Service
         public void TaskUpdate(TaskItem existingTask)
         {
             this.taskStorage.TaskUpdate(existingTask);
+        }
+
+        public IEnumerable<TaskItem> GetTasksForList(Guid ListId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

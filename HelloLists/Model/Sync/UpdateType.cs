@@ -1,9 +1,13 @@
 ﻿namespace HelloLists.Model.Sync
 {
+    /// <summary>
+    /// Enum representing possible types of synchronization messages
+    /// </summary>
     public enum UpdateType
     {
-        Add = 0,
-        Update = 1,
-        Remove = 2
+        Add,
+        Update,
+        Remove,
+        Reorder
     }
 }

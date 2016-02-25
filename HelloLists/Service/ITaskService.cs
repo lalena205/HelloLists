@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
-    interface ITaskService
+    public interface ITaskService
     {
+        /// <summary>
+        /// Interface describing Tasks operations
+        /// </summary>
         IEnumerable<TaskItem> GetTasksForList(Guid ListId);
+
         void TaskAdd(TaskItem newTask);
 
         void TaskUpdate(TaskItem existingTask);
+
         void TaskRemove(TaskItem item);
+
         IEnumerable<TaskItem> GetAllTasks(string _sortField);
     }
 }

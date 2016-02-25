@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using HelloLists.ContentResoler;
 using HelloLists.Service;
+using HelloLists.ViewModel;
 
 namespace HelloLists
 {
@@ -54,15 +55,17 @@ namespace HelloLists
             }
 #endif
 
-            /*
-             *   Register dependencies             */
+            // Register dependencies
             var dependencyFactory = new DependencyFactory();
-
-            // INITIALIZE DATABASE
-            LoadData();
-
+            
+            // Initialize database
+            //  On the first run creates database and tables and adds default tables
+            InitializeDatabase();
+            
+            // Load base models used in the application
             ISyncService syncService = DependencyFactory.Resolve<ISyncService>();
             IListService listService = DependencyFactory.Resolve<IListService>();
+            ITaskService taskService = DependencyFactory.Resolve<ITaskService>();
 
             // load  model for main view
             AppListsModel = new ListViewModel(syncService, listService);
@@ -100,7 +103,7 @@ namespace HelloLists
             Window.Current.Activate();
         }
 
-        private void LoadData()
+        private void InitializeDatabase()
         {
             SQLiteHelper dbHelper = new SQLiteHelper();
 

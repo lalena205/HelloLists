@@ -103,11 +103,9 @@
     </Compile>
     <Compile Include="Base\ObservableObject.cs" />
     <Compile Include="Base\Settings.cs" />
-    <Compile Include="Base\SettingsLocal.cs" />
     <Compile Include="Base\DependencyFactory.cs" />
-    <Compile Include="ListViewModel.cs" />
     <Compile Include="Model\Sync\ListItemUpdate.cs" />
-    <Compile Include="SenderType.cs" />
+    <Compile Include="Base\SenderType.cs" />
     <Compile Include="Service\SyncDataProviderService.cs" />
     <Compile Include="Service\ISyncDataProviderService.cs" />
     <Compile Include="Service\SyncService.cs" />
@@ -127,10 +125,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPageData.cs" />
     <Compile Include="Model\List\ListItem.cs" />
-    <Compile Include="Model\List\ListModel.cs" />
-    <Compile Include="Model\Task\TaskModel.cs" />
     <Compile Include="Model\Task\TaskItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IListService.cs" />
@@ -141,6 +136,8 @@
     <Compile Include="Storage\ListStorage.cs" />
     <Compile Include="Storage\ITaskStorage.cs" />
     <Compile Include="Storage\TaskStorage.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
+    <Compile Include="ViewModel\ListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -171,12 +168,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NotificationSync\NotificationSync.csproj">
-      <Project>{96ca8afc-d73f-4a0e-85e2-d668e69a675f}</Project>
-      <Name>NotificationSync</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="SQLite.UWP.2015, Version=3.11.0">
