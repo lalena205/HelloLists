@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using HelloLists.ContentResoler;
 using HelloLists.Service;
 using HelloLists.ViewModel;
+using HelloTasks.ViewModel;
 
 namespace HelloLists
 {
@@ -28,7 +29,7 @@ namespace HelloLists
     sealed partial class App : Application
     {
         public static ListViewModel AppListsModel { get; set; }
-        //public task view model
+        public static TaskViewModel AppTasksModel { get; set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -69,7 +70,8 @@ namespace HelloLists
 
             // load  model for main view
             AppListsModel = new ListViewModel(syncService, listService);
-            
+            AppTasksModel = new TaskViewModel(syncService, taskService);
+
             syncService.Start();
 
             Frame rootFrame = Window.Current.Content as Frame;

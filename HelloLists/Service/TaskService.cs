@@ -45,7 +45,8 @@ namespace HelloLists.Service
 
         public IEnumerable<TaskItem> GetTasksForList(Guid ListId)
         {
-            throw new NotImplementedException();
+            return new List<TaskItem>();
+            //throw new NotImplementedException();
         }
     }
 }

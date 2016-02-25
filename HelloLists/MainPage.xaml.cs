@@ -27,11 +27,11 @@ namespace HelloLists
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public ListItem SelectItem { get; set; }
-
         private ListViewModel ListView { get; set; } 
 
         private ListItem currentList;
+        private bool working = false;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -43,12 +43,14 @@ namespace HelloLists
 
         private void InitializeControls()
         {
-            txtAddNew.GotFocus += txtAddNew_GotFocus;
-            txtAddNew.KeyDown += txtAddNew_KeyDown;
+            TxtAddNew.GotFocus += txtAddNew_GotFocus;
+            TxtAddNew.KeyDown += txtAddNew_KeyDown;
 
-            btnAddList.Click += btnAddList_Click;            
+            BtnAddList.Click += btnAddList_Click;
+            BtnDeleteList.Click += btnDeleteList_Click;
+            TodoListsView.SelectionChanged += TodoListsView_SelectionChanged;
         }
-        
+
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
@@ -56,23 +58,59 @@ namespace HelloLists
 
         private void btnAddList_Click(object sender, RoutedEventArgs e)
         {
+            if (working)
+            {
+                return;
+            }
+
+            this.working = true;
             AddListToCollection();
+            this.working = false;
         }
         
         private void txtAddNew_KeyDown(object sender, KeyRoutedEventArgs e)
         {
+            if (working)
+            {
+                return;
+            }
+
+            this.working = true;
+
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 e.Handled = true;
 
                 AddListToCollection();
             }
+            this.working = false;
         }
 
         private void txtAddNew_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtAddNew.Text = string.Empty;
-            txtAddNew.GotFocus -= txtAddNew_GotFocus;
+            TxtAddNew.Text = string.Empty;
+            TxtAddNew.GotFocus -= txtAddNew_GotFocus;
+        }
+        private void TodoListsView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.currentList = (ListItem)TodoListsView.SelectedItem;
+            TasksFrame.Navigate(typeof(TaskPage), this.currentList);
+        }
+
+        private void btnDeleteList_Click(object sender, RoutedEventArgs e)
+        {
+            if (working)
+            {
+                return;
+            }
+
+            this.working = true;
+
+            //TODO doesn't work
+            TasksFrame.Navigate(typeof(BlankPage));
+            ListView.RemoveList(this.currentList, SenderType.User);
+
+            this.working = false;
         }
 
         private void AddListToCollection()
@@ -80,7 +118,7 @@ namespace HelloLists
             this.currentList = new ListItem
             {
                 Id = new Guid(),
-                Title = txtAddNew.Text,
+                Title = TxtAddNew.Text,
                 CreatedOn = DateTime.Now,
                 LastModified = DateTime.Now,
                 LastUpdated = DateTime.MinValue
@@ -88,25 +126,7 @@ namespace HelloLists
 
             ListView.AddList(currentList, SenderType.User);
 
-            txtAddNew.Text = string.Empty;
-        }
-        
-        private void btnAddList_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var MyFrame = this.Frame;
-            Frame.Navigate(typeof(TaskPage), "HELLO From Navigation");
-            //else if (PesquisarPalavraChave.IsSelected) { Frame.Navigate(typeof(View.SearchWordPage)); }
-            //else if (PesquisarAssunto.IsSelected) { Frame.Navigate(typeof(View.SearchMatterPage)); }
+            TxtAddNew.Text = string.Empty;
         }
     }
 }

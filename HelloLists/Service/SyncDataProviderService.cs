@@ -21,9 +21,9 @@ namespace HelloLists.Service
                     {
                         Timestamp = DateTime.Now,
                         Type = UpdateType.Add,
-                        Data = new TaskItemUpdate
+                        Data = new ListItemUpdate
                         {
-                            Item = new TaskItem()
+                            Item = new ListItem()
                             {
                                 Title = "Blana"
                             }

@@ -102,8 +102,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\ObservableObject.cs" />
+    <Compile Include="Base\ISettings.cs" />
     <Compile Include="Base\Settings.cs" />
     <Compile Include="Base\DependencyFactory.cs" />
+    <Compile Include="BlankPage.xaml.cs">
+      <DependentUpon>BlankPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Sync\ListItemUpdate.cs" />
     <Compile Include="Base\SenderType.cs" />
     <Compile Include="Service\SyncDataProviderService.cs" />
@@ -160,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BlankPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TaskPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

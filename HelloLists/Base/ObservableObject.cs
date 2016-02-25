@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace HelloLists.Base
 {
-    class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

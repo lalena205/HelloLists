@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
+using HelloLists.Base;
 using HelloLists.Model.Sync;
 using Microsoft.Practices.Unity;
 
@@ -21,9 +22,11 @@ namespace HelloLists.Service
         [Dependency]
         public ISyncDataProviderService SyncDataProviderService { get; set; }
 
+        [Dependency]
+        public ISettings Settings { get; set; }
+
         private Task syncThread;
         private List<Action<SyncMessage>> handlers;
-        private DateTime lastSucccesfulSync;
 
         public SyncService()
         {
@@ -45,7 +48,8 @@ namespace HelloLists.Service
         {
             while (true)
             {
-                var updates = SyncDataProviderService.FetchUpdates(lastSucccesfulSync).ToList();
+                // Get only updates newer than lastSuccesful sync
+                var updates = SyncDataProviderService.FetchUpdates(this.Settings.LastSuccesfulSync).ToList();
 
                 if (updates != null)
                 {
@@ -61,7 +65,7 @@ namespace HelloLists.Service
                     // to make sure we din't miss updates
                     if (updates.Count > 0)
                     {
-                        this.lastSucccesfulSync = DateTime.Now;
+                        this.Settings.LastSuccesfulSync = DateTime.Now;
                     }
                 }
                 else

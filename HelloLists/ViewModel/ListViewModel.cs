@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Core;
 using HelloLists.Model;
@@ -74,10 +75,27 @@ namespace HelloLists.ViewModel
             }
         }
 
-        public void RemoveList(ListItem item)
+        public void RemoveList(ListItem item, SenderType sender)
         {
-            this.Lists.Remove(item);
-            // TODO
+            dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                this.Lists.Remove(item);
+            });
+
+            this.listService.ListRemove(item);
+
+            if (sender != SenderType.SyncService)
+            {
+                this._syncService.SendUpdate(new SyncMessage
+                {
+                    Type = UpdateType.Remove,
+                    Timestamp = DateTime.Now,
+                    Data = new ListItemUpdate
+                    {
+                        Item = item
+                    }
+                });
+            }
         }
     }
 }
