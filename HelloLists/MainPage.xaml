@@ -14,13 +14,13 @@
                 <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="BtnAddList" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
+                    <Button x:Name="BtnAddList" FontFamily="Segoe MDL2 Assets" Content="&#xE710;"
                     Width="50" Height="50" Background="Transparent"/>
                     <TextBox x:Name="TxtAddNew" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="40" TextWrapping="Wrap" 
                              Text="" Width="100" FontWeight="Light" FontStyle="Italic" TextAlignment="Right" RenderTransformOrigin="0.364,3.856" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="Favorite" Margin="12,0,17, 0"/>
+                    <Button Content="&#xE735;" FontFamily="Segoe MDL2 Assets" Margin="12,0,17, 0"/>
                     <TextBlock Text="Starred" FontSize="16" VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">

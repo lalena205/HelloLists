@@ -99,7 +99,7 @@ namespace HelloLists.ContentResolver
         {
             using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
             {
-                db.InsertOrReplace(newEntry);
+                db.Update(newEntry);
             }
         }
     }
