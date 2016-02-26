@@ -1,5 +1,7 @@
 ﻿using SQLite;
 using System;
+using System.ComponentModel;
+using HelloTasks.ViewModel;
 
 namespace HelloLists.Model
 {
@@ -44,5 +46,7 @@ namespace HelloLists.Model
             get;
             set;
         }
+
+        public ListSortType SortBy { get; set; }
     }
 }

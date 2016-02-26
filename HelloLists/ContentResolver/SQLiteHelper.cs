@@ -17,7 +17,9 @@ namespace HelloLists.ContentResoler
             // Initialize the database if necessary
             using (var db = new SQLite.SQLiteConnection(DBPath))
             {
-                db.DeleteAll<ListItem>();                
+                //db.DeleteAll<ListItem>();
+                //db.DeleteAll<TaskItem>();
+
                 if ( db.CreateTable<ListItem>() > 0)
                 {
                     LoadInitialData();
@@ -33,22 +35,28 @@ namespace HelloLists.ContentResoler
             {
                 ListItem li = new ListItem
                 {
+                    Id = Guid.NewGuid(),
                     Title = "Books",
                     CreatedOn = DateTime.Now,
+                    SortBy = ListSortType.CreationDate
                 };
 
                 db.Insert(li);
                 li = new ListItem
                 {
+                    Id = Guid.NewGuid(),
                     Title = "Movies",
                     CreatedOn = DateTime.Now,
+                    SortBy = ListSortType.CreationDate
                 };
                 db.Insert(li);
 
                 li = new ListItem
                 {
+                    Id = Guid.NewGuid(),
                     Title = "Songs",
                     CreatedOn = DateTime.Now,
+                    SortBy = ListSortType.CreationDate
                 };
                 db.Insert(li);                
             }

@@ -43,7 +43,6 @@ namespace HelloLists
 
         private void InitializeControls()
         {
-            TxtAddNew.GotFocus += txtAddNew_GotFocus;
             TxtAddNew.KeyDown += txtAddNew_KeyDown;
 
             BtnAddList.Click += btnAddList_Click;
@@ -85,12 +84,7 @@ namespace HelloLists
             }
             this.working = false;
         }
-
-        private void txtAddNew_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TxtAddNew.Text = string.Empty;
-            TxtAddNew.GotFocus -= txtAddNew_GotFocus;
-        }
+        
         private void TodoListsView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.currentList = (ListItem)TodoListsView.SelectedItem;
@@ -106,9 +100,10 @@ namespace HelloLists
 
             this.working = true;
 
-            //TODO doesn't work
-            TasksFrame.Navigate(typeof(BlankPage));
+            //frame does not refresh or navigate
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
             ListView.RemoveList(this.currentList, SenderType.User);
+            TasksFrame.Navigate(typeof(BlankPage));
 
             this.working = false;
         }
@@ -117,15 +112,15 @@ namespace HelloLists
         {
             this.currentList = new ListItem
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Title = TxtAddNew.Text,
                 CreatedOn = DateTime.Now,
                 LastModified = DateTime.Now,
-                LastUpdated = DateTime.MinValue
+                LastUpdated = DateTime.MinValue,
+                SortBy = ListSortType.CreationDate
             };
 
             ListView.AddList(currentList, SenderType.User);
-
             TxtAddNew.Text = string.Empty;
         }
     }

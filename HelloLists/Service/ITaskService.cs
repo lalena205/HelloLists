@@ -1,9 +1,6 @@
 ﻿using HelloLists.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HelloLists.Service
 {
@@ -12,14 +9,12 @@ namespace HelloLists.Service
         /// <summary>
         /// Interface describing Tasks operations
         /// </summary>
-        IEnumerable<TaskItem> GetTasksForList(Guid ListId);
+        IEnumerable<TaskItem> GetTasksForList(ListItem List);
 
         void TaskAdd(TaskItem newTask);
 
         void TaskUpdate(TaskItem existingTask);
 
         void TaskRemove(TaskItem item);
-
-        IEnumerable<TaskItem> GetAllTasks(string _sortField);
     }
 }

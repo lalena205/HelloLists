@@ -22,15 +22,7 @@ namespace HelloLists.Service
         {
             throw new NotImplementedException();
         }
-
-        public IEnumerable<TaskItem> GetTasksForListByTitle(Guid ListId)
-        {
-            var tasks = taskStorage.GetTasksForList(ListId).ToArray();
-            Array.Sort(tasks, TaskItem.SortAscendingByTitle());
-
-            return tasks;
-        }
-
+        
         public void TaskAdd(TaskItem newTask)
         {
             this.taskStorage.TaskAdd(newTask);
@@ -46,10 +38,9 @@ namespace HelloLists.Service
             this.taskStorage.TaskUpdate(existingTask);
         }
 
-        public IEnumerable<TaskItem> GetTasksForList(Guid ListId)
+        public IEnumerable<TaskItem> GetTasksForList(ListItem List)
         {
-            return new List<TaskItem>();
-            //throw new NotImplementedException();
+            return this.taskStorage.GetTasksForList(List);
         }
     }
 }

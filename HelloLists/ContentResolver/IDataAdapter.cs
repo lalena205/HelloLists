@@ -16,7 +16,9 @@ namespace HelloLists.ContentResoler
 
         List<T> Fetch(Expression<Func<IComparable>> orderByExpression);
 
-        List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<IComparable>> orderByExpression);
+        List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<T, string>> orderByString);
+        List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<T, int>> orderByInt);
+        List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<T, DateTime>> orderByDate);
 
         List<T> Fetch();
 

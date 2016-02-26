@@ -17,7 +17,7 @@
                     <Button x:Name="BtnAddList" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
                     Width="50" Height="50" Background="Transparent"/>
                     <TextBox x:Name="TxtAddNew" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="40" TextWrapping="Wrap" 
-                             Text="Add new List" Width="100" FontWeight="Light" FontStyle="Italic" TextAlignment="Right" RenderTransformOrigin="0.364,3.856" />
+                             Text="" Width="100" FontWeight="Light" FontStyle="Italic" TextAlignment="Right" RenderTransformOrigin="0.364,3.856" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Favorite" Margin="12,0,17, 0"/>
@@ -46,8 +46,8 @@
                     <RowDefinition Height="520"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" DataContext="{Binding SelectedItem, ElementName=TodoListsView}" Grid.Row="0">
-                    <TextBlock Text="{Binding Title}" Width="180" Height="44" Margin="100,0,88,0" FontSize="18px" FontStretch="Expanded"/>
-                    <Button x:Name="BtnDeleteList" Content="Del" FontFamily="Segoe MDL2 Assets" Width="50" Margin="20,0,20,0" Height="42" />
+                    <TextBlock Text="{Binding Title}" Width="180" Height="44" Margin="100,0,88,0" FontSize="18" FontStretch="Expanded"/>
+                    <Button x:Name="BtnDeleteList" Content="&#xE74D;" FontFamily="Segoe MDL2 Assets" Width="50" Margin="20,0,20,0" Height="42" />
                 </StackPanel>
                 <StackPanel DataContext="{Binding SelectedItem, ElementName=TodoListsView}" Height="500" Grid.Row="1">
                     <Frame Name="TasksFrame"/>

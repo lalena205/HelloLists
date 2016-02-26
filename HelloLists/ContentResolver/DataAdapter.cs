@@ -30,9 +30,40 @@ namespace HelloLists.ContentResolver
             }
         }
 
-        public List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<IComparable>> orderByExpression)
+        public List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<T, DateTime>> orderByExpression)
         {
-            throw new NotImplementedException();
+            var entities = new List<T>();
+
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
+            {
+                var query = db.Table<T>().Where(whereCondition).OrderBy(orderByExpression);
+                entities.AddRange(query);
+            }
+            return entities;
+        }
+
+        public List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<T, string>> orderByString)
+        {
+            var entities = new List<T>();
+
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
+            {
+                var query = db.Table<T>().Where(whereCondition).OrderBy(orderByString);
+                entities.AddRange(query);
+            }
+            return entities; ;
+        }
+
+        public List<T> Fetch(Expression<Func<T, bool>> whereCondition, Expression<Func<T, int>> orderByInt)
+        {
+            var entities = new List<T>();
+
+            using (var db = new SQLiteConnection(SQLiteHelper.DBPath))
+            {
+                var query = db.Table<T>().Where(whereCondition).OrderBy(orderByInt);
+                entities.AddRange(query);
+            }
+            return entities; ;
         }
 
         public List<T> Fetch()

@@ -13,6 +13,9 @@ namespace HelloLists.Service
     {
         public IEnumerable<SyncMessage> FetchUpdates(DateTime lastSucccesfulSync)
         {
+            return new List<SyncMessage>();
+            
+            // comment previous return to test sync service functionality
             if (DateTime.Now.Second%30 == 0)
             {
                 return new List<SyncMessage>

@@ -12,7 +12,7 @@ namespace HelloLists.Service
     /// </summary>
     public interface ITaskStorage
     {
-        IEnumerable<TaskItem> GetTasksForList(Guid ListId);
+        IEnumerable<TaskItem> GetTasksForList(ListItem List);
         void TaskAdd(TaskItem newTask);
 
         void TaskUpdate(TaskItem existingTask);

@@ -24,29 +24,97 @@ namespace HelloLists
     /// </summary>
     public sealed partial class TaskPage : Page
     {
-
-        private ListItem parentList;
+        private bool working = false;
         private TaskViewModel TaskView { get; set; }
 
         public TaskPage()
         {
             this.InitializeComponent();
             TaskView = App.AppTasksModel;
+
+            InitializeControls();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter != null)
             {
-                this.parentList = e.Parameter as ListItem;
-                if (this.parentList == null)
+                this.TaskView.ParentList = e.Parameter as ListItem;
+                if (this.TaskView.ParentList == null)
                 {
-                    this.Hello.Text = "Sorry, there was an error;";
                     return;
                 }
 
-                this.Hello.Text = this.parentList.Title;
+                this.TaskView.Tasks = null;
+                this.TaskView.SetTasksforList();
             }
+        }
+
+        private void InitializeControls()
+        {
+            BtnAddTask.Click += btnAddTask_Click;
+            
+            TxtAddNewTask.KeyDown += txtAddNewTask_KeyDown;
+            BtnSortTasks.Click += btnSortTasks_Click;
+        }
+
+        private void btnSortTasks_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.TaskView.ParentList.SortBy == ListSortType.CreationDate)
+            {
+                this.TaskView.SortTaskBy(ListSortType.Title);
+            }
+            else
+            {
+                this.TaskView.SortTaskBy(ListSortType.CreationDate);
+            }
+        }
+
+        private void txtAddNewTask_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (working)
+            {
+                return;
+            }
+
+            this.working = true;
+
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                e.Handled = true;
+
+                AddTaskToList();
+            }
+            this.working = false;
+        }
+
+        private void btnAddTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (working)
+            {
+                return;
+            }
+
+            this.working = true;
+            AddTaskToList();
+            this.working = false;
+        }
+
+        private void AddTaskToList()
+        {
+            TaskItem currentTask = new TaskItem
+            {
+                Id = new Guid(),
+                Title = TxtAddNewTask.Text,
+                CreatedOn = DateTime.Now,
+                LastModified = DateTime.Now,
+                LastUpdated = DateTime.MinValue,
+                DueDate =  DateTime.MaxValue,
+                ListId = this.TaskView.ParentList.Id
+            };
+
+            TaskView.AddTask(currentTask, SenderType.User);
+            TxtAddNewTask.Text = string.Empty;
         }
     }
 }
